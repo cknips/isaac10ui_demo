@@ -6,7 +6,7 @@ Dieses Projekt zeigt eine beispielhafte Integration der Funktionen der API von i
 Folgende Funktionen werden behandelt:
 
 - Anzeigen der Registrierseite mit isaac10-UI
-- Registrieren & Anlegen von Kunden für den isaac10-Demo-Händler auf der Staging-Umgebung und in dieser Applikation selbst
+- Registrieren & Anlegen von Kunden für den isaac10-Demo-Händler auf der isaac10-Applikation und in dieser Applikation selbst
 - Anzeigen & Ändern von Accountinformationen von registrierten Kunden mit isaac10-UI
 - Anzeige von Buchungen und Buchungsverwaltung mit isaac10-UI
 - Anzeige von Rechnungen und Rechnungsdownload mit isaac10-UI
@@ -24,10 +24,10 @@ Um diese Applikation lokal auszuführen werden die üblichen Schritte ausgeführ
   - `bin/rake db:migrate`
 
 Diese Schritte erzeugen lediglich eine "customers"-Tabelle mit den oben beschriebenen Feldern.  
-Beim lokalen Betrieb ist darauf zu achten dass diese Applikation dazu erstellt wurde um entweder mit einer ebenfalls lokalen Instanz von isaac10 zu interagieren oder im Production-Modus mit der Staging-Umgebung von isaac10. Da diese Applikation auch als Teil einer CI-Umgebung dient werden die enthaltenen Feature-Tests (mit Selenium/Capybara) entweder gegen eine laufende lokale Instanz dieser Applikation oder die deployte Version auf Heroku ausgeführt. Die Einstellungen hierfür (`Capybara.app_host` etc.) sind selbsterklärend.
+Beim lokalen Betrieb ist darauf zu achten dass diese Applikation dazu erstellt wurde um entweder mit einer ebenfalls lokalen Instanz von isaac10 zu interagieren oder im Production-Modus mit isaac10. Da diese Applikation auch als Teil einer CI-Umgebung dient werden die enthaltenen Feature-Tests (mit Selenium/Capybara) entweder gegen eine laufende lokale Instanz dieser Applikation oder die deployte Version auf Heroku ausgeführt. Die Einstellungen hierfür (`Capybara.app_host` etc.) sind selbsterklärend.
 #### Umgebungsvariablen
 Neben den üblichen Umgebungsvariablen (`RAILS_ENV` etc.) werden noch weitere für die Steuerung der Tests benutzt:
-- `TEST_AGAINST_HEROKU` wird gesetzt wenn die Applikation deployt wurde und die enthaltenen Selenium-Tests gegen die deployte Applikation ausgeführt werden sollen um mit der Staging-Umgebung zu interagieren.
+- `TEST_AGAINST_HEROKU` wird gesetzt wenn die Applikation deployt wurde und die enthaltenen Selenium-Tests gegen die deployte Applikation ausgeführt werden sollen um mit isaac10 zu interagieren.
 - `SELENIUM_BROWSER` kann auf `chrome` gesetzt werden um die Selenium-Tests mit dem chromedriver auszuführen. Wird nichts oder etwas anderes angegeben wird Firefox benutzt.
 
 ## isaac10-Funktionen
@@ -84,7 +84,7 @@ ___
 ### Introduction
 This project showcases a sample integration of functionality provided by isaac10's API inside a Ruby-On-Rails application like stated on [isaac10-API-Dokumentation](https://isaac10-api-dokumentation.readme.io/v1.0/docs). The following functionalities are addressed:
 - Display of the registration page via isaac10-UI
-- Registration and creation of customer records for the isaac10-demo-merchant on the staging environment and this application
+- Registration and creation of customer records for the isaac10-demo-merchant within isaac10 and this application
 - Display and edit of account data of registered customers via isaac10-UI
 - Display and edit of subscriptions via isaac10-UI
 - Display and edit of bills and bill download via isaac10-UI
@@ -103,10 +103,10 @@ Starting this application locally is straightforward:
   - `bin/rake db:migrate`
 
 These steps merely create one table named "customers" with the fields stated above.  
-Notice that this application was made to be used to test against a local running instance of isaac10 or to be deployed and be used to test against the staging-environment of isaac10. Because this application is part of a continuous-integration-setup its containing tests (with Selenium/Capybara) are either using a running local instance or a deployed version of this app. All settings regarding this (`Capybaara.app_host` etc.) should be self-explanatory.
+Notice that this application was made to be used to test against a local running instance of isaac10 or to be deployed and be used to test against isaac10. Because this application is part of a continuous-integration-setup its containing tests (with Selenium/Capybara) are either using a running local instance or a deployed version of this app. All settings regarding this (`Capybaara.app_host` etc.) should be self-explanatory.
 #### Environment variables
 Besides standard variables like `RAILS_ENV` there are a few more for controlling the tests:
-- `TEST_AGAINST_HEROKU` is set when the app is deployed and the contained selenium-tests should use the deployed instance to test against the staging environment
+- `TEST_AGAINST_HEROKU` is set when the app is deployed and the contained selenium-tests should use the deployed instance to test against isaac10.
 - `SELENIUM_BROWSER` can be set to `chrome` for running the tests using the chromedriver. If set to anything else or nothing Firefox will be used.
 ## isaac10 functionality
 ### Display of products
