@@ -12,14 +12,14 @@ Folgende Funktionen werden behandelt:
 - Anzeige von Rechnungen und Rechnungsdownload mit isaac10-UI
 - Anzeigen von Produkten mittels `getProducts()`
 
-Gleichzeitig ist dieses Projekt auch Teil einer Continuous-Integration-Umgebung, eine laufende Instanz dieser Applikation befindet sich unter [FIXME: Heroku](http://foo.bar) und wird für automatisierte Tests verwendet.
+Gleichzeitig wird dieses Projekt auch Teil einer Continuous-Integration-Umgebung, eine laufende Instanz dieser Applikation befindet sich unter [isaac10ui-demo.herokuapp.com](https://isaac10ui-demo.herokuapp.com) und kann für automatisierte Tests verwendet werden.
 ### Grundlegende Anforderungen an die Integration
 Wie in der [isaac10-API-Dokumentation](https://isaac10-api-dokumentation.readme.io/v1.0/docs) beschrieben werden die benötigten JavaScript-Bibliotheken einfach über `<script>`-Tags in eine HTML-Seite eingebunden. In dieser Applikation geschieht dies mit den Dateien `isaac10_api.js` und `isaac10_ui.js` in `app/views/layouts/application.html.erb`, die eigentliche Verwendung der isaac10-API und isaac10-UI geschieht innerhalb von `<script>`-Tags in den jeweiligen `index.html.erb`-Dateien im jeweiligen Bereich der Applikation (siehe unten).
 Weiterhin wird für die Datenhaltung der erzeugten Datensätze ein Model mit Feldern für eine Kundennummer und das API-Token für die weitere Authentifizierung des Kunden benötigt. Beim erfolgreichen Abschluß einer Buchung und Registrierung werden die Datensätze `customer_number` und `customer_api_token` mittels eines Webhooks von isaac10 zurückgegeben. Innerhalb dieser Beispielapplikation werden sie als Felder `customer_number` und `customer_api_token` in einem `Customer`-Model abgespeichert. Stellen Sie in ihrer Applikation sicher dass Sie diese Daten ähnlich abspeichern können.   
 Weitere spezielle Anforderungen gibt es nicht.
 #### Diese Applikation lokal starten
 Um diese Applikation lokal auszuführen werden die üblichen Schritte ausgeführt:
-  - `git clone FIXME: github-url` 
+  - `git clone https://github.com/isaac10-gmbh/isaac10ui_demo`
   - `bin/rake db:create:all`
   - `bin/rake db:migrate`
 
@@ -90,7 +90,7 @@ This project showcases a sample integration of functionality provided by isaac10
 - Display and edit of bills and bill download via isaac10-UI
 - Display of products via `getProducts()`
 
-At the same time, this project is part of a continuous-integration-setup, a running instance is found on [FIXME: Heroku](http://foo.bar) and is used for automated testing.
+At the same time, this project will be part of a continuous-integration-setup, a running instance is found on [isaac10ui-demo.herokuapp.com](https://isaac10ui-demo.herokuapp.com/) and can be used for automated testing.
 ### Basic requirements for integrating
 Like stated in the docs ([isaac10-API-Dokumentation](https://isaac10-api-dokumentation.readme.io/v1.0/docs)), all needed JavaScripts are loaded inside `<script>`-tags within an HTML-document. In this application, the files `isaac10_api.js` and `isaac10_ui.js` are loaded in `app/views/layouts/application.html.erb`. The actual usage of the libraries happens inside `<script>`-tags in the corresponding `index.html.erb`-files for each single functionality (see below).
 
@@ -98,7 +98,7 @@ For storing the submitted records, you need at least a model which can store val
 There are no further special requirements.
 #### Start this app locally
 Starting this application locally is straightforward:
-  - `git clone FIXME: github-url` 
+  - `git clone https://github.com/isaac10-gmbh/isaac10ui_demo`
   - `bin/rake db:create:all`
   - `bin/rake db:migrate`
 
