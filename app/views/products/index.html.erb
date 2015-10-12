@@ -1,0 +1,73 @@
+<script>
+  $(document).ready(function() {
+    var RAILS_ENV = gon.rails_env;
+    var SUBDOMAIN = gon.subdomain;
+    var isaac10   = new Isaac10(SUBDOMAIN, RAILS_ENV);
+
+    isaac10.getProducts().then(function(result) {
+      for(i in result.products) {
+        var productName = Object.keys(result.products[i])[0];
+        var rowHTML = "<div class='row' id='" + productName + "Row'>" +
+          "<div class ='col-md-12'><h2>" + productName + "</h2></div>"
+
+        var plansArray  = result.products[i][productName].plans;
+        for(j in plansArray) {
+          var planName     = Object.keys(plansArray[j])[0];
+          var planNid      = plansArray[j][planName].nid;
+          var planData     = plansArray[j][planName].data;
+          var planSetupFee = plansArray[j][planName].setup_fee;
+          var pricesArray  = plansArray[j][planName].price;
+          var pricesHTML = "";
+          if (pricesArray.length > 0) {
+            for(p in pricesArray) {
+              var interval = pricesArray[p].interval;
+              var cents    = pricesArray[p].cents;
+              switch(interval) {
+                case "monthly":
+                  interval = "Monatlich";
+                  break;
+                case "quarterly":
+                  interval = "Quartalsweise";
+                  break;
+                case "yearly":
+                  interval = "Jährlich";
+                  break;
+              }
+              pricesHTML += "<b>" + interval + "</b>: ";
+              price       = parseInt(cents) / 100;
+              pricesHTML += price.toString() + " €" + "</br>";
+             }
+          } else {
+            pricesHTML = "<b>Kostenlos</b></br>";
+          }
+          var fee = parseInt(planSetupFee) / 100;
+          if(isNaN(fee)) {
+            fee = 0;
+          }
+          if (planData === null) {
+            planData = "";
+          }
+          var registerLink = "<a href='/register#/plan/" + planNid + "'>" +
+            planName + "</a>"
+          var planBoxHTML = "<div class='col-md-3'>" +
+            "<div class='panel panel-default'>" +
+              "<div class='panel-heading'><h4>" + registerLink + "</h4></div>" +
+              "<div class='panel-body'>" + pricesHTML +
+              "<b>Einrichtugsgebühr: </b>" + fee.toString() + " €" + "</br>" +
+              "<b>Freitext: </b>" + planData + "</br>" +
+              "</div>" +
+            "</div>" +
+          "</div>"
+          rowHTML += planBoxHTML;
+        }
+      $("#productsContainer").append(rowHTML + "</div>");
+      }
+    });
+  });
+</script>
+
+<div class="container" id="productsContainer">
+  <div class="row">
+    <h1><%= t(".headline") %></h1>
+  </div>
+</div>

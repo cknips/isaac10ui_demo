@@ -1,0 +1,22 @@
+development: &default
+  subdomain: "test"
+  # These have to be hard-coded
+  coupon_code: "abc123"
+  free_plan_name: "Free Plan 1"
+  free_plan_with_not_free_additions_name: "Free Plan 2"
+  # standard plan, its booking gets seeded into isaac10 every night
+  not_free_plan_name: "Test Plan 1"
+  # a plan with one normal and one quantifiable addition
+  quantifiable_plan_name: "Test Plan 1"
+<% if ENV["TEST_AGAINST_HEROKU"] %>
+  submit_url: "https://demo.isaac10.com"
+<% else %>
+  submit_url: "http://test.localhost.dev:3000"
+<% end %>
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  subdomain: "demo"
