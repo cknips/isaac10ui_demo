@@ -13,3 +13,8 @@ test:
   pool: 5
   username: isaac10
   password:
+
+production:
+  adapter: postgresql
+  enoding: unicode
+  url: <%= ENV['DATABASE_URL'] %>
