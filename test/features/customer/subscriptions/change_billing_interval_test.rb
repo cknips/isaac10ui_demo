@@ -31,8 +31,6 @@ feature "Subscriptions test" do
     click_button("Kostenpflichtig Bestellen")
 
     assert_equal(page.has_content?("zukünftiger Preis"), true)
-    # TODO: Anzeigefehler
-    skip("TODO: Test failing ATM")
     assert_equal(page.has_content?("pro Jahr"), true)
 
     # API call verifies data has changed
