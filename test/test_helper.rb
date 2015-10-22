@@ -13,16 +13,25 @@ Minitest::Reporters.use!(
   [Minitest::Reporters::DefaultReporter.new(reporter_options)])
 
 
-url = "http://192.168.50.1:4444/wd/hub"
-Capybara.register_driver :selenium_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
-  Capybara::Selenium::Driver.new(app, :browser => :remote, :url => url,
-                                 :desired_capabilities => capabilities)
-end
-Capybara.register_driver :selenium_firefox do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.firefox
-  Capybara::Selenium::Driver.new(app, :browser => :remote, :url => url,
-                                 :desired_capabilities => capabilities)
+if ENV["TEST_AGAINST_HEROKU"]
+  Capybara.register_driver :selenium_chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+  Capybara.register_driver :selenium_firefox do |app|
+    Capybara::Selenium::Driver.new(app, browser: :firefox)
+  end
+else
+  url = "http://192.168.50.1:4444/wd/hub"
+  Capybara.register_driver :selenium_chrome do |app|
+    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
+    Capybara::Selenium::Driver.new(app, :browser => :remote, :url => url,
+                                  :desired_capabilities => capabilities)
+  end
+  Capybara.register_driver :selenium_firefox do |app|
+    capabilities = Selenium::WebDriver::Remote::Capabilities.firefox
+    Capybara::Selenium::Driver.new(app, :browser => :remote, :url => url,
+                                  :desired_capabilities => capabilities)
+  end
 end
 Capybara.default_max_wait_time = 240
 
@@ -34,8 +43,7 @@ else
 end
 
 if ENV["TEST_AGAINST_HEROKU"]
-  # TODO: set to URL of deployed demo app
-  # Capybara.app_host    =
+  Capybara.app_host    = "https://isaac10ui-demo.herokuapp.com"
 else
   Capybara.app_host    = "http://192.168.50.4:3001"
   Capybara.server_port = 3001

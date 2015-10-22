@@ -1,0 +1,11 @@
+development: &default
+  customer_number: "100001"
+  customer_api_token: "test_api_token"
+  email: "test.customer@example.com"
+  password: "123456"
+
+test:
+  <<: *default
+
+production:
+  <<: *default

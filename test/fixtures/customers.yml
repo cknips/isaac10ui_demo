@@ -1,13 +1,7 @@
 dummy_customer:
-<% if ENV["TEST_AGAINST_HEROKU"] %>
+<% unless ENV["TEST_AGAINST_HEROKU"] %>
   # these settings are seeded into isaac10 every night and are used
   # for tests right after
-  customer_number: "100001"
-  customer_api_token: "test_api_token"
-  email: "test.customer@example.com"
-  password_digest: <%= BCrypt::Password.create("123456", cost: 4) %>
-<% else %>
-  # these settings keep track of a single customer from a local isaac10 instance
   customer_number: "100001"
   customer_api_token: "test_api_token"
   email: "test.customer@example.com"

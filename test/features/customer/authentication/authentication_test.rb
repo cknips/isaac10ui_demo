@@ -4,19 +4,20 @@ feature "Customer authentication" do
   scenario "login and logout" do
     visit root_path
 
-    fill_in "session_email",    with: customers(:dummy_customer).email
+    email = Rails.application.config_for(:customer)["email"]
+    fill_in "session_email",    with: email
     fill_in "session_password", with: ""
     click_button "Kundenlogin"
     assert_equal(page.has_content?("Login nicht erfolgreich"), true)
     assert_equal(page.current_path, "/")
 
-    fill_in "session_email",    with: customers(:dummy_customer).email
+    fill_in "session_email",    with: email
     fill_in "session_password", with: "foobar"
     click_button "Kundenlogin"
     assert_equal(page.has_content?("Login nicht erfolgreich"), true)
     assert_equal(page.current_path, "/")
 
-    fill_in "session_email",    with: customers(:dummy_customer).email
+    fill_in "session_email",    with: email
     fill_in "session_password", with: "123456"
     click_button "Kundenlogin"
     assert_equal(page.has_content?("Login erfolgreich"), true)

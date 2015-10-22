@@ -63,10 +63,12 @@ class ActiveSupport::TestCase
     id =
       customer_subscriptions_array(customer_token, customer_number).first["id"]
     unless customer_token
-      customer_token  = customers(:dummy_customer).customer_api_token
+      customer_token  =
+        Rails.application.config_for(:customer)["customer_api_token"]
     end
     unless customer_number
-      customer_number = customers(:dummy_customer).customer_number
+      customer_number =
+        Rails.application.config_for(:customer)["customer_number"]
     end
     url               =
       "/api/v1/customer/#{customer_number}/subscriptions/#{id}/edit"
@@ -82,10 +84,12 @@ class ActiveSupport::TestCase
     id =
       customer_subscriptions_array(customer_token, customer_number).first["id"]
     unless customer_token
-      customer_token  = customers(:dummy_customer).customer_api_token
+      customer_token  =
+        Rails.application.config_for(:customer)["customer_api_token"]
     end
     unless customer_number
-      customer_number = customers(:dummy_customer).customer_number
+      customer_number =
+        Rails.application.config_for(:customer)["customer_number"]
     end
     url               =
       "/api/v1/customer/#{customer_number}/subscriptions/#{id}/edit"
@@ -109,10 +113,12 @@ class ActiveSupport::TestCase
 
   def customer_data_hash(customer_token=nil, customer_number=nil)
     unless customer_token
-      customer_token  = customers(:dummy_customer).customer_api_token
+      customer_token  =
+        Rails.application.config_for(:customer)["customer_api_token"]
     end
     unless customer_number
-      customer_number = customers(:dummy_customer).customer_number
+      customer_number =
+        Rails.application.config_for(:customer)["customer_number"]
     end
     url               = "/api/v1/customer/#{customer_number}/account"
     customer_hash     =
@@ -144,8 +150,10 @@ class ActiveSupport::TestCase
   end
 
   def customer_bills_array
-    customer_token     = customers(:dummy_customer).customer_api_token
-    customer_number    = customers(:dummy_customer).customer_number
+    customer_token     =
+      Rails.application.config_for(:customer)["customer_api_token"]
+    customer_number    = 
+        Rails.application.config_for(:customer)["customer_number"]
     url                = "/api/v1/customer/#{customer_number}/bills"
     @_bills_hash  ||=
       connection.get do |request|
@@ -157,10 +165,12 @@ class ActiveSupport::TestCase
 
   def customer_subscriptions_array(customer_token=nil, customer_number=nil)
     unless customer_token
-      customer_token   = customers(:dummy_customer).customer_api_token
+      customer_token  =
+        Rails.application.config_for(:customer)["customer_api_token"]
     end
     unless customer_number
-      customer_number  = customers(:dummy_customer).customer_number
+      customer_number =
+        Rails.application.config_for(:customer)["customer_number"]
     end
     url                = "/api/v1/customer/#{customer_number}/subscriptions"
     subscriptions_hash =
