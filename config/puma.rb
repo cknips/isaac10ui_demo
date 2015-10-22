@@ -10,6 +10,8 @@ rackup      DefaultRackup
 environment env
 if env == "development"
   bind 'tcp://192.168.50.4:3001'
+else
+  port ENV['PORT'] || 3000
 end
 
 on_worker_boot do
