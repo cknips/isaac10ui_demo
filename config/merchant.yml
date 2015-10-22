@@ -8,7 +8,7 @@ development: &default
   not_free_plan_name: "Test Plan 1"
   # a plan with one normal and one quantifiable addition
   quantifiable_plan_name: "Test Plan 1"
-<% if ENV["TEST_AGAINST_HEROKU"] %>
+<% if Rails.env == "production" %>
   submit_url: "https://demo.isaac10.com"
   api_url: "http://demo.isaac10.com"
 <% else %>
