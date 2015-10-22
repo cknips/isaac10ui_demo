@@ -1,0 +1,8 @@
+# ~/.tmuxinator/isaac10ui_demo.yml
+
+name: isaac10ui_demo
+root: /vagrant
+
+
+windows:
+  - puma: bundle exec puma -C config/puma.rb
