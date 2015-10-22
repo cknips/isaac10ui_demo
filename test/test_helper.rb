@@ -12,13 +12,19 @@ reporter_options = { color: true }
 Minitest::Reporters.use!(
   [Minitest::Reporters::DefaultReporter.new(reporter_options)])
 
+
+url = "http://192.168.50.1:4444/wd/hub"
 Capybara.register_driver :selenium_chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
+  Capybara::Selenium::Driver.new(app, :browser => :remote, :url => url,
+                                 :desired_capabilities => capabilities)
 end
 Capybara.register_driver :selenium_firefox do |app|
-  Capybara::Selenium::Driver.new(app, browser: :firefox)
+  capabilities = Selenium::WebDriver::Remote::Capabilities.firefox
+  Capybara::Selenium::Driver.new(app, :browser => :remote, :url => url,
+                                 :desired_capabilities => capabilities)
 end
-Capybara.default_max_wait_time = 30
+Capybara.default_max_wait_time = 240
 
 
 if ENV["SELENIUM_BROWSER"] == "chrome"
@@ -31,7 +37,7 @@ if ENV["TEST_AGAINST_HEROKU"]
   # TODO: set to URL of deployed demo app
   # Capybara.app_host    =
 else
-  Capybara.app_host    = "http://0.0.0.0:3001"
+  Capybara.app_host    = "http://192.168.50.4:3001"
   Capybara.server_port = 3001
 end
 

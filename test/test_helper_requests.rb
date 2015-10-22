@@ -100,7 +100,7 @@ class ActiveSupport::TestCase
 
   private
   def connection
-    url = Rails.application.config_for(:merchant)["submit_url"]
+    url = Rails.application.config_for(:merchant)["api_url"]
     @_connection ||= Faraday.new(:url => url) do |faraday|
       faraday.request  :url_encoded
       faraday.adapter  Faraday.default_adapter

@@ -10,8 +10,10 @@ development: &default
   quantifiable_plan_name: "Test Plan 1"
 <% if ENV["TEST_AGAINST_HEROKU"] %>
   submit_url: "https://demo.isaac10.com"
+  api_url: "http://demo.isaac10.com"
 <% else %>
   submit_url: "http://test.localhost.dev:3000"
+  api_url: "http://test.isaac10_instance.dev:3000"
 <% end %>
 
 test:

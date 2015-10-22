@@ -5,8 +5,8 @@ threads threads_count, threads_count
 preload_app!
 
 rackup      DefaultRackup
-port        ENV["PORT"]     || 3001
 environment ENV["RACK_ENV"] || "development"
+bind        'tcp://192.168.50.4:3001'
 
 on_worker_boot do
   # Worker specific setup for Rails 4.1+
