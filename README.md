@@ -103,7 +103,7 @@ Starting this application locally is straightforward:
   - `bin/rake db:migrate`
 
 These steps merely create one table named "customers" with the fields stated above.  
-Notice that this application was made to be used to test against a local running instance of isaac10 or to be deployed and be used to test against isaac10. Because this application is part of a continuous-integration-setup its containing tests (with Selenium/Capybara) are either using a running local instance or a deployed version of this app. All settings regarding this (`Capybaara.app_host` etc.) should be self-explanatory.
+Notice that this application was made to be used to test against a local running instance of isaac10 or to be deployed and be used to test against isaac10. Because this application is part of a continuous-integration-setup its containing tests (with Selenium/Capybara) are either using a running local instance or a deployed version of this app. All settings regarding this (`Capybara.app_host` etc.) should be self-explanatory.
 #### Environment variables
 Besides standard variables like `RAILS_ENV` there are a few more for controlling the tests:
 - `TEST_AGAINST_HEROKU` is set when the app is deployed and the contained selenium-tests should use the deployed instance to test against isaac10.

@@ -1,0 +1,51 @@
+<div class="container">
+  <h1><%= t(".headline") %></h1>
+
+  <% if Rails.env == "production" %>
+    <%= link_to "Customer Dashboard",
+      "https://demo.isaac10.com/customer/dashboard?token=test_api_token" %>
+    <br>
+    <br>
+    <form action="https://demo.isaac10.com/customer/dashboard?token=test_api_token"
+      method="POST">
+      <button id="post_login"
+        type="submit"
+        class="btn btn-primary">
+        Customer Dashboard
+      </button>
+    </form>
+    <br>
+    <br>
+    <form action="https://demo.isaac10.com/customer/account?a=account&token=test_api_token#/account"
+      method="POST">
+      <button id="post_login"
+        type="submit"
+        class="btn btn-primary">
+        Customer Account
+      </button>
+    </form>
+  <% else %>
+    <%= link_to "Customer Dashboard",
+      "http://test.localhost.dev:3000/customer/dashboard?token=test_api_token" %>
+    <br>
+    <br>
+    <form action="http://test.localhost.dev:3000/customer/dashboard?token=test_api_token"
+      method="POST">
+      <button id="post_login"
+        type="submit"
+        class="btn btn-primary">
+        Customer Dashboard
+      </button>
+    </form>
+    <br>
+    <br>
+    <form action="http://test.localhost.dev:3000/customer/account?a=account&token=test_api_token#/account"
+      method="POST">
+      <button id="post_login"
+        type="submit"
+        class="btn btn-primary">
+        Customer Account
+      </button>
+    </form>
+  <% end %>
+</div>

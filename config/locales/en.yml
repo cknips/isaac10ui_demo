@@ -13,6 +13,9 @@ en:
     index:
       headline: isaac10-UI Demo-Integration
       index_text: All customer data generated with this site will be reset every day.
+  external_links:
+    index:
+      headline: Login-Links
   sessions:
     create:
       flash:

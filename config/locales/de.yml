@@ -13,6 +13,9 @@ de:
     index:
       headline: isaac10-UI Demo-Integration
       index_text: Alle mit dieser Seite angelegten Kundendatensätze werden jeden Tag zurückgesetzt.
+  external_links:
+    index:
+      headline: Login-Links
   sessions:
     create:
       flash:
